@@ -6,6 +6,9 @@
 
   <ItemGroup>
     <Compile Remove="Class1.cs" />
+    <Compile Remove="Infrastructure\Interfaces\IVideoRepository.cs" />
+    <Compile Remove="Infrastructure\Interfaces\IVideoUploadRepository.cs" />
+    <Compile Remove="Infrastructure\Interfaces\IMongoDbFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -14,5 +17,10 @@
     <Folder Include="Views\" />
     <Folder Include="Infrastructure\Repositories\" />
     <Folder Include="Infrastructure\Interfaces\" />
+    <Folder Include="Services\Factories\" />
+    <Folder Include="ValueObjects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
   </ItemGroup>
 </Project>
