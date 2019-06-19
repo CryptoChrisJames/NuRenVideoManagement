@@ -1,6 +1,7 @@
 ﻿using System;
 using MongoDB.Driver;
 using NuRenVideoApplication.Infrastructure.Interfaces;
+using NuRenVideoApplication.ValueObjects;
 
 namespace NuRenVideoApplication.Infrastructure.Repositories.Clients
 {
@@ -13,6 +14,7 @@ namespace NuRenVideoApplication.Infrastructure.Repositories.Clients
         {
             MongoClient = new MongoClient("mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737");
             MongoDatabase = MongoClient.GetDatabase("nurenqa1");
+            var collection = MongoDatabase.GetCollection<VideoUploadEvent>("");
         }
 
     }
