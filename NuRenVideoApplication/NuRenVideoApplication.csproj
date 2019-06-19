@@ -17,8 +17,8 @@
     <Folder Include="Views\" />
     <Folder Include="Infrastructure\Repositories\" />
     <Folder Include="Infrastructure\Interfaces\" />
-    <Folder Include="Services\Factories\" />
     <Folder Include="ValueObjects\" />
+    <Folder Include="Infrastructure\Repositories\Clients\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.8.1" />

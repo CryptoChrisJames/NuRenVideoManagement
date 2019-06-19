@@ -8,11 +8,9 @@ namespace NuRenVideoApplication.Services
 {
     public class VideoUploadEventService : IVideoUploadEventService
     {
-        public IMongoDbClientFactory mongoClient { get; set; }
 
-        public VideoUploadEventService(IMongoDbClientFactory mongoDbClientFactory)
+        public VideoUploadEventService()
         {
-            // mongoClient = mongoDbClientFactory("mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737/nurenqa1");
         }
 
         public Task<IEnumerable<VideoUploadEvent>> GetVideoUploadEvents()

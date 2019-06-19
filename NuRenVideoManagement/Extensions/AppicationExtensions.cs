@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using NuRenVideoApplication.Infrastructure.Interfaces;
-using NuRenVideoApplication.Services.Factories;
+using NuRenVideoApplication.Infrastructure.Repositories.Clients;
 
 namespace NuRenVideoManagement.Extensions
 {
@@ -9,7 +9,7 @@ namespace NuRenVideoManagement.Extensions
     {
         public static IServiceCollection AddAppicationExtensions(this IServiceCollection services)
         {
-            services.AddTransient<IMongoDbClientFactory, MongoDbClientFactory>();
+            services.AddTransient<IVideoDbClient, VideoDbClient>();
             return services;
         }
     }
