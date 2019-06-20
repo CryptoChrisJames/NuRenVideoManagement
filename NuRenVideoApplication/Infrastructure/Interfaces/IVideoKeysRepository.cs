@@ -11,6 +11,6 @@ namespace NuRenVideoApplication.Infrastructure.Interfaces
     {
         IMongoCollection<VideoS3Key> VideoS3KeysCollection { get; set; }
         IEnumerable<VideoS3Key> GetVideoS3Keys();
-        VideoS3Key GetVideoS3Key(ObjectId _id);
+        VideoS3Key GetVideoS3Key(string _id);
     }
 }

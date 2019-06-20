@@ -9,6 +9,6 @@ namespace NuRenVideoApplication.Infrastructure.Interfaces
     public interface IVideoKeysService
     {
         IEnumerable<VideoS3Key> GetVideoKeys();
-        VideoS3Key GetKey(ObjectId id);
+        VideoS3Key GetKey(string id);
     }
 }

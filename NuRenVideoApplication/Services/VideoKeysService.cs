@@ -16,7 +16,7 @@ namespace NuRenVideoApplication.Services
             _repo = repo;
         }
 
-        public VideoS3Key GetKey(ObjectId id) => _repo.GetVideoS3Key(id);
+        public VideoS3Key GetKey(string id) => _repo.GetVideoS3Key(id);
 
         public IEnumerable<VideoS3Key> GetVideoKeys() => _repo.GetVideoS3Keys();
     }

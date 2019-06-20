@@ -25,8 +25,8 @@ namespace NuRenVideoManagement.Controllers
         [HttpGet]
         public IEnumerable<VideoS3Key> GetKeys() => _service.GetVideoKeys();
 
-        //[Route("{id}")]
-        //[HttpGet]
-        //public VideoS3Key GetKeys(ObjectId id) => _service.GetKey(id);
+        [Route("{id}")]
+        [HttpGet]
+        public VideoS3Key GetKeys(string id) => _service.GetKey(id);
     }
 }
