@@ -12,9 +12,8 @@ namespace NuRenVideoApplication.Infrastructure.Repositories.Clients
 
         public VideoDbClient()
         {
-            MongoClient = new MongoClient("mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737");
+            MongoClient = new MongoClient("mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737/nurenqa1");
             MongoDatabase = MongoClient.GetDatabase("nurenqa1");
-            var collection = MongoDatabase.GetCollection<VideoUploadEvent>("");
         }
 
     }

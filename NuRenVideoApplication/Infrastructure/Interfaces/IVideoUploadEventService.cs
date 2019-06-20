@@ -7,6 +7,6 @@ namespace NuRenVideoApplication.Infrastructure.Interfaces
 {
     public interface IVideoUploadEventService
     {
-        Task<IEnumerable<VideoUploadEvent>> GetVideoUploadEvents();
+        IEnumerable<VideoUploadEvent> GetVideoUploadEvents();
     }
 }

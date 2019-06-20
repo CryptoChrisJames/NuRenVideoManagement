@@ -8,14 +8,12 @@ namespace NuRenVideoApplication.Services
 {
     public class VideoUploadEventService : IVideoUploadEventService
     {
-
-        public VideoUploadEventService()
+        IVideoUploadEventRepository _repo { get; set; }
+        public VideoUploadEventService(IVideoUploadEventRepository repo)
         {
+            _repo = repo;
         }
 
-        public Task<IEnumerable<VideoUploadEvent>> GetVideoUploadEvents()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<VideoUploadEvent> GetVideoUploadEvents() => _repo.GetVideoUploadEvents();
     }
 }
