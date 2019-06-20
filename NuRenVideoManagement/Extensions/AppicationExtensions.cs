@@ -14,6 +14,8 @@ namespace NuRenVideoManagement.Extensions
             services.AddTransient<IVideoDbClient, VideoDbClient>();
             services.AddTransient<IVideoUploadEventRepository, VideoUploadEventRepository>();
             services.AddTransient<IVideoUploadEventService, VideoUploadEventService>();
+            services.AddTransient<IVideoKeysRepository, VideoKeysRepository>();
+            services.AddTransient<IVideoKeysService, VideoKeysService>();
             return services;
         }
     }

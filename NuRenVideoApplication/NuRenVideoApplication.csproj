@@ -5,19 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="Views\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Class1.cs" />
     <Compile Remove="Infrastructure\Interfaces\IVideoRepository.cs" />
     <Compile Remove="Infrastructure\Interfaces\IVideoUploadRepository.cs" />
     <Compile Remove="Infrastructure\Interfaces\IMongoDbFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Infrastructure\" />
-    <Folder Include="Services\" />
-    <Folder Include="Views\" />
-    <Folder Include="Infrastructure\Repositories\" />
-    <Folder Include="Infrastructure\Interfaces\" />
-    <Folder Include="ValueObjects\" />
     <Folder Include="Infrastructure\Repositories\Clients\" />
   </ItemGroup>
   <ItemGroup>
