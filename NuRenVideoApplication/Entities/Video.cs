@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NuRenVideoApplication.Entities
 {
-    class Video
+    public class Video
     {
     }
 }
