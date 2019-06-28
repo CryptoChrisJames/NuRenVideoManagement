@@ -5,10 +5,7 @@ EXPOSE 443
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY ["NuRenVideoManagement.csproj", "NuRenVideoManagement/"]
-RUN dotnet restore "NuRenVideoManagement/NuRenVideoManagement.csproj"
-COPY . .
-WORKDIR "/src/NuRenVideoManagement"
+RUN dotnet restore "NuRenVideoManagement.csproj"
 RUN dotnet build "NuRenVideoManagement.csproj" -c Release -o /app
 
 FROM build AS publish
