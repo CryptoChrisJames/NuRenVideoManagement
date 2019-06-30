@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY ["NuRenVideoManagement/NuRenVideoManagement.csproj", "NuRenVideoManagement/"]
+COPY ["NuRenVideoManagement.csproj", "NuRenVideoManagement/"]
 RUN dotnet restore "NuRenVideoManagement/NuRenVideoManagement.csproj"
 COPY . .
 WORKDIR "/src/NuRenVideoManagement"
