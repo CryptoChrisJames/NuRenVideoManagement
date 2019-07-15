@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-aspnetcore-runtime AS build
+FROM microsoft/dotnet:2.1-sdk AS build
 COPY . .
 RUN dotnet restore "NuRenVideoManagement/NuRenVideoManagement.csproj"
 
