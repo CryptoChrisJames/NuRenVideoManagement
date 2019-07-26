@@ -38,5 +38,5 @@ const loadNewVideoKeys = async () => {
     return client.db('nurenqa1').collection('nurenvideokeys');
 };
 
-app.listen(process.env.PORT || 7657);
+app.listen(process.env.PORT || 80);
 console.log("Video Management API is running. ");
