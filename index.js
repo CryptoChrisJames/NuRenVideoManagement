@@ -22,6 +22,23 @@ app.get('/keys', async (req, res) => {
     res.send(await keys.find().toArray());
 });
 
+app.post('/project', async (req, res) => {
+    const data = req.body.view;
+    const project = await loadVideoViews();
+    await project.insertOne({
+        name: data.name,
+        description: data.description,
+        video: data.video,
+        thumbnail: data.thumbnail,
+    });
+    res.send(true);
+})
+
+app.get('/project', async (req, res) => {
+    const projects = await loadVideoViews();
+    res.send(await projects.find().toArray());
+})
+
 const loadNewVideoEvents = async () => {
     const client = await mongodb.MongoClient.connect
     ('mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737/nurenqa1', {
@@ -38,5 +55,13 @@ const loadNewVideoKeys = async () => {
     return client.db('nurenqa1').collection('nurenvideokeys');
 };
 
-app.listen(process.env.PORT || 80);
+const loadVideoViews = async () => {
+    const client = await mongodb.MongoClient.connect
+    ('mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737/nurenqa1', {
+        useNewUrlParser: true
+    });
+    return client.db('nurenqa1').collection('nurenvideoviews'); 
+}
+
+app.listen(process.env.PORT || 8000);
 console.log("Video Management API is running. ");
