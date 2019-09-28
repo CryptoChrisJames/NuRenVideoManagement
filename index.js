@@ -5,7 +5,7 @@ const mongodb = require('mongodb');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
 app.get('/health', async (req, res) => {
@@ -23,7 +23,7 @@ app.get('/keys', async (req, res) => {
 });
 
 app.post('/project', async (req, res) => {
-    const data = req.body.view;
+    const data = req.body;
     const project = await loadVideoViews();
     await project.insertOne({
         name: data.name,
@@ -63,5 +63,5 @@ const loadVideoViews = async () => {
     return client.db('nurenqa1').collection('nurenvideoviews'); 
 }
 
-app.listen(process.env.PORT || 80);
+app.listen(process.env.PORT || 8000);
 console.log("Video Management API is running. ");
