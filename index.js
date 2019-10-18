@@ -49,6 +49,13 @@ app.post('/update', async (req, res) => {
     res.status(200).send();
 });
 
+app.post('/delete', async (req, res) => {
+    const project = await loadVideoViews();
+    const filter = { _id: new ObjectId(req.body.id) };
+    await project.deleteOne(filter);
+    res.status(200).send();
+});
+
 const loadNewVideoEvents = async () => {
     const client = await mongodb.MongoClient.connect
     ('mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737/nurenqa1', {
