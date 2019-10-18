@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongodb = require('mongodb');
+const ObjectId = require('mongodb').ObjectID;
 
 const app = express();
 
@@ -32,12 +33,21 @@ app.post('/project', async (req, res) => {
         thumbnail: data.thumbnail,
     });
     res.send(true);
-})
+});
 
 app.get('/project', async (req, res) => {
     const projects = await loadVideoViews();
     res.send(await projects.find().toArray());
-})
+});
+
+app.post('/update', async (req, res) => {
+    const data = req.body;
+    const project = await loadVideoViews();
+    const filter = { _id: new ObjectId(data.id) };
+    const values = {$set: {name: data.name, description: data.description}};
+    await project.updateOne(filter, values);
+    res.status(200).send();
+});
 
 const loadNewVideoEvents = async () => {
     const client = await mongodb.MongoClient.connect
@@ -61,7 +71,7 @@ const loadVideoViews = async () => {
         useNewUrlParser: true
     });
     return client.db('nurenqa1').collection('nurenvideoviews'); 
-}
+};
 
-app.listen(process.env.PORT || 80);
+app.listen(process.env.PORT || 9000);
 console.log("Video Management API is running. ");
