@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongodb = require('mongodb');
 const ObjectId = require('mongodb').ObjectID;
+const config = require('./config.json');
 
+const env = process.env.PROJECTENV;
 const app = express();
 
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -11,6 +13,11 @@ app.use(cors());
 
 app.get('/health', async (req, res) => {
     res.send("Health check: Management API active.");
+});
+
+app.post('/', async (req, res) => {
+    console.log(req.body);
+    res.send(req.body);
 });
 
 app.get('/events', async (req, res) => {
@@ -56,29 +63,43 @@ app.post('/delete', async (req, res) => {
     res.status(200).send();
 });
 
-const loadNewVideoEvents = async () => {
+const loadNewVideoEvents = async () => {    
     const client = await mongodb.MongoClient.connect
-    ('mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737/nurenqa1', {
+    (config.env[currentENV()].connectionString.toString(), {
         useNewUrlParser: true
     });
-    return client.db('nurenqa1').collection('newvideoevents');
+    return client.db(config.env[currentENV()].db).collection('newvideoevents');
 };
 
 const loadNewVideoKeys = async () => {
     const client = await mongodb.MongoClient.connect
-    ('mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737/nurenqa1', {
+    (config.env[currentENV()].connectionString.toString(), {
         useNewUrlParser: true
     });
-    return client.db('nurenqa1').collection('nurenvideokeys');
+    return client.db(config.env[currentENV()].db).collection('nurenvideokeys');
 };
 
 const loadVideoViews = async () => {
     const client = await mongodb.MongoClient.connect
-    ('mongodb://ObsidianTech:Obsidian12!@ds131737.mlab.com:31737/nurenqa1', {
+    (config.env[currentENV()].connectionString.toString(), {
         useNewUrlParser: true
     });
-    return client.db('nurenqa1').collection('nurenvideoviews'); 
+    return client.db(config.env[currentENV()].db).collection('nurenvideoviews'); 
 };
 
-app.listen(process.env.PORT || 80);
-console.log("Video Management API is running. ");
+const currentENV = () => {
+    if(!env){
+        return 'development';
+    }
+    return env
+}
+
+const currentPORT = () => {
+    if(env === 'development' || env === 'dev'){
+        return '8000';
+    }
+    return '80'
+}
+
+app.listen(currentPORT());
+console.log("Video Management API is running. ", currentENV());
